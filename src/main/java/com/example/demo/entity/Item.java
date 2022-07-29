@@ -49,8 +49,8 @@ public class Item implements Serializable {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
 //    private Collection<OrderDetails> orderDetailsCollection;
 //
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-//    private Collection<Preorder> preorderCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
+    private Collection<Preorder> preorderCollection;
 
     public Item() {
     }
