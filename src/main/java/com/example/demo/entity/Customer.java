@@ -45,8 +45,8 @@ public class Customer implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-//    private Collection<Order1> order1Collection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private Collection<Order1> order1Collection;
 
     public Customer() {
     }
