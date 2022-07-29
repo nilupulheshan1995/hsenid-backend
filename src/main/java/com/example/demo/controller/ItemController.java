@@ -2,10 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -25,10 +22,10 @@ public class ItemController {
         return ResponseEntity.ok(new ArrayList<>());
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public ResponseEntity<?> addItem(@RequestBody String item){
         // TODO: add Items
-        return new ResponseEntity<>(item, HttpStatus.FOUND);
+        return new ResponseEntity<>("success - "+item, HttpStatus.OK);
     }
 
 
