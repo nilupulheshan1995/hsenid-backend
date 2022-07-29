@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/category")
 public class CategoryController {
 
-    @PostMapping(value = "/add")
-    public ResponseEntity<?> addCategory(@RequestBody String name){
+    @PostMapping(value = "/add")                    // api/category/add -> body
+    public ResponseEntity<?> addCategory(@RequestBody String name) {
         // TODO: add category
-        return new ResponseEntity<>("new Category :"+name, HttpStatus.OK);
+        return new ResponseEntity<>("new Category :" + name, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/get/{name}")
-    public ResponseEntity<?> getAllItemsByCategory(@PathVariable("name") String name){
+    @PostMapping(value = "/get/{name}")             // api/category/get/xxx
+    public ResponseEntity<?> getAllItemsByCategory(@PathVariable("name") String name) {
         // TODO: get all items by categoty
-        return new ResponseEntity<>("Items by :"+name, HttpStatus.OK);
+        return new ResponseEntity<>("Items by :" + name, HttpStatus.OK);
     }
 
 }
