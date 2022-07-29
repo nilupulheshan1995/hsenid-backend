@@ -4,6 +4,7 @@
  */
 package com.example.demo.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,12 +25,13 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "category")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "category_id")
     private Long categoryId;
@@ -43,8 +45,4 @@ public class Category implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Collection<Item> itemCollection;
 
-    public Category() {
-    }
-
-    
 }

@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Customer;
+import com.example.demo.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +29,12 @@ public class CustomerController {
         return "Delete by ID - " + id;
     }
 
+    @Autowired
+    CustomerRepository repository;
+
     @PostMapping(value = "/add")
     public String addCustomer(@RequestBody String id) {
+        repository.save(new Customer());
         return "Add - " + id;
     }
 }
