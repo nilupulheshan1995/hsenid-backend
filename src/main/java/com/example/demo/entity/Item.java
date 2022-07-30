@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.*;
 
@@ -28,7 +29,7 @@ public class Item implements Serializable {
     private Long itemid;
 
     @Column(name = "av_stock")
-    private Integer avStock;
+    private BigDecimal avStock;
 
     @Column(name = "unitPrice")
     private Long unitPrice;
