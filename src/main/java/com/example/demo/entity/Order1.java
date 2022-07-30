@@ -41,8 +41,8 @@ public class Order1 implements Serializable {
     @Column(name = "discount")
     private BigDecimal discount;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order1")
-    private Collection<OrderDetails> orderDetailsCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order1")
+//    private Collection<OrderDetails> orderDetailsCollection;
 
     @Column(name = "customer_id")
     private Long customer;

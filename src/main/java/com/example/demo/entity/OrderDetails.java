@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.*;
 
 /**
@@ -26,15 +27,17 @@ public class OrderDetails implements Serializable {
     protected Long orderDetailsPK;
 
     @Column(name = "qty")
-    private Long qty;
+    private BigDecimal qty;
 
-    @JoinColumn(name = "item_id", referencedColumnName = "item_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Item item;
+//    @JoinColumn(name = "item_id", referencedColumnName = "item_id", insertable = false, updatable = false)
+//    @ManyToOne(optional = false)
+    @Column(name = "item_id")
+    private Long item;
 
-    @JoinColumn(name = "order_id", referencedColumnName = "order_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Order1 order1;
+//    @JoinColumn(name = "order_id", referencedColumnName = "order_id", insertable = false, updatable = false)
+//    @ManyToOne(optional = false)
+    @Column(name = "order_id")
+    private Long order;
 
     public OrderDetails() {
     }
