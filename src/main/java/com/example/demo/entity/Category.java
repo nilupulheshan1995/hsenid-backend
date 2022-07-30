@@ -25,7 +25,6 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Builder
 @Table(name = "category")
 public class Category implements Serializable {
 
@@ -45,4 +44,6 @@ public class Category implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Collection<Item> itemCollection;
 
+    public Category() {
+    }
 }

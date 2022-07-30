@@ -1,11 +1,11 @@
-package com.example.demo.dto;
+package com.example.demo.payload.request;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CategoryDTO {
+public class CategoryRequest {
     private String name;
     private String description;
 }

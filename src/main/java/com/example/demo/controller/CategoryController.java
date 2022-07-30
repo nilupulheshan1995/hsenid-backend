@@ -1,26 +1,27 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Category;
+import com.example.demo.payload.request.CategoryRequest;
 import com.example.demo.repository.CategoryRepository;
+import com.example.demo.service.CategoryService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping(path = "api/category")
 public class CategoryController {
 
     @Autowired
-    CategoryRepository repository;
+    CategoryService service;
+
 
     @PostMapping(value = "/add")                    // api/category/add -> body
-    public ResponseEntity<?> addCategory(@RequestBody String name) {
-        Category entity = Category.builder().name("test").description("test description").build();
-        Category save = repository.save(entity);
-        return new ResponseEntity<>("new Category :" + name + save, HttpStatus.OK);
+    public ResponseEntity<?> addCategory(@RequestBody CategoryRequest request) {
+        return service.addCategory(request);
     }
 
     @PostMapping(value = "/get/{name}")             // api/category/get/xxx
