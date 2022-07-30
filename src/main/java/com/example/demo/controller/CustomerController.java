@@ -1,40 +1,37 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.example.demo.payload.request.CustomerRequest;
+import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/customer")
 public class CustomerController {
 
+
+    @Autowired
+    CustomerService service;
+
     @GetMapping(path = "/getAll")               // api/customer/getAll
-    public String getCustomers() {
-        //TODO: get all customers
-        return "Hello";
+    public ResponseEntity getCustomers() {
+        return service.getAllCustomers();
     }
 
     @GetMapping(path = "/get")                // api/customer/get?id=1001
-    public String getCustomerById(@RequestParam String id) {
-        // TODO: getCustomer by ID
-        return "Get by ID - " + id;
+    public ResponseEntity getCustomerById(@RequestParam String id) {
+        return service.getCustomerById(Long.parseLong(id));
     }
 
     @GetMapping(value = "/delete/{id}")       // api/customer/delete/1001
-    public String deleteCustomer(@PathVariable("id") String id) {
-        // TODO: delete customer by ID
-        return "Delete by ID - " + id;
+    public ResponseEntity deleteCustomer(@PathVariable("id") String id) {
+        return service.deleteCustomer(Long.parseLong(id));
     }
 
-    @Autowired
-    CustomerRepository repository;
 
     @PostMapping(value = "/add")
-    public String addCustomer(@RequestBody String id) {
-        repository.save(new Customer());
-        return "Add - " + id;
+    public ResponseEntity addCustomer(@RequestBody CustomerRequest customer) {
+        return service.addCustomer(customer);
     }
 }
