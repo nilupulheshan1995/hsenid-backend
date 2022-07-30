@@ -41,8 +41,8 @@ public class Category implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private Collection<Item> itemCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+//    private Collection<Item> itemCollection;
 
     public Category() {
     }

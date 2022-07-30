@@ -42,9 +42,8 @@ public class Item implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
-    @ManyToOne
-    private Category category;
+    @Column(name = "category_id")
+    private Long category_id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private Collection<OrderDetails> orderDetailsCollection;

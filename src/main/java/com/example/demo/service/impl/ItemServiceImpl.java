@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
         Optional<Category> category = categoryRepo.findById(itemRequest.getCategoryId());
         if (category.isPresent()) {
             Category categoryEntity = category.get();
-            itemEntity.setCategory(categoryEntity);
+            itemEntity.setCategory_id(itemRequest.getCategoryId());
 
             return new ResponseEntity<>(itemRepo.save(itemEntity), HttpStatus.OK);
         } else {
@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
         List<Item> all = itemRepo.findAll();
         System.out.println("size : " + all.size());
         for (Item item:all){
-            System.out.println(item.getAvStock()+"-"+item.getItemid()+"-"+item.getCategory().getName());
+            System.out.println(item.getAvStock()+"-"+item.getItemid()+"-"+item.getCategory_id());
         }
         return all;
     }
