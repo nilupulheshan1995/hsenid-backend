@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Item;
 import com.example.demo.payload.request.AddItemRequest;
 import com.example.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/item")
@@ -17,9 +19,9 @@ public class ItemController {
     ItemService service;
 
     @GetMapping(path = "/getAll")           // api/item/getALl
-    public ResponseEntity<?> getAllItems() {
-        // TODO: get aLl Items
-        return ResponseEntity.ok(new ArrayList<>());
+    public ResponseEntity<List<Item>> getAllItems() {
+        List<Item> allItems = service.getAllItems();
+        return new ResponseEntity<>(allItems,HttpStatus.OK);
     }
 
     @GetMapping(path = "/display")          //api/item/display

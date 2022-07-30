@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -29,12 +31,12 @@ public class ItemServiceImpl implements ItemService {
         ModelMapper mapper = new ModelMapper();
         Item itemEntity = mapper.map(itemRequest, Item.class);
         Optional<Category> category = categoryRepo.findById(itemRequest.getCategoryId());
-        if(category.isPresent()){
+        if (category.isPresent()) {
             Category categoryEntity = category.get();
             itemEntity.setCategory(categoryEntity);
 
             return new ResponseEntity<>(itemRepo.save(itemEntity), HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>("Category Not found", HttpStatus.NOT_FOUND);
         }
     }
@@ -45,7 +47,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ResponseEntity getAllItems() {
-        return null;
+    public List<Item> getAllItems() {
+        List<Item> all = itemRepo.findAll();
+        System.out.println("size : " + all.size());
+        for (Item item:all){
+            System.out.println(item.getAvStock()+"-"+item.getItemid()+"-"+item.getCategory().getName());
+        }
+        return all;
     }
 }
