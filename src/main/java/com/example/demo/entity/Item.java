@@ -43,7 +43,7 @@ public class Item implements Serializable {
     private String description;
 
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Category category;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
