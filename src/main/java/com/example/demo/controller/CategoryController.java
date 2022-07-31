@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "api/category")
 public class CategoryController {
@@ -28,6 +30,11 @@ public class CategoryController {
     public ResponseEntity<?> getAllItemsByCategory(@PathVariable("name") String name) {
         // TODO: get all items by categoty
         return new ResponseEntity<>("Items by :" + name, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getAll")
+    public ResponseEntity<List> getAllCategories(){
+        return service.getAllCategories();
     }
 
 }

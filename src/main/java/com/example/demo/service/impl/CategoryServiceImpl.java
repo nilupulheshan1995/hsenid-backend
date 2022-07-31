@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
@@ -27,5 +29,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public ResponseEntity getAllItemsByCategoryName(String categoryName) {
         return null;
+    }
+
+    @Override
+    public ResponseEntity<List> getAllCategories() {
+        List<Category> all = repository.findAll();
+        return new ResponseEntity<>(all,HttpStatus.OK);
     }
 }
