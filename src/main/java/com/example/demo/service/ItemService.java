@@ -10,5 +10,5 @@ public interface ItemService {
     ResponseEntity addItem(AddItemRequest itemRequest);
     ResponseEntity getDisplayItems();
     List<Item> getAllItems();
-
+    ResponseEntity<List> getAllItemsByOrder(long orderID);
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrderService {
     ResponseEntity<List<Order1>> getAllOrders();
     ResponseEntity addOrder(AddOrderRequest order);
+
+    ResponseEntity<List> getAllItemsByOrder(Long orderID);
 }

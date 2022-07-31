@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 @RequestMapping(path = "api/order")
 public class OrderController {
@@ -21,6 +24,11 @@ public class OrderController {
     @PostMapping(value = "/add")
     public ResponseEntity placeOrder(@RequestBody AddOrderRequest order){
         return orderService.addOrder(order);
+    }
+
+    @GetMapping(value = "/get/{oid}")
+    public ResponseEntity<List> itemsbyOrder(@PathVariable("oid") String orderID ){
+        return orderService.getAllItemsByOrder(Long.parseLong(orderID));
     }
 
 }

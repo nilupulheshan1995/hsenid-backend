@@ -53,6 +53,11 @@ public class OrderServiceImpl implements OrderService {
         return new ResponseEntity<>(saved,HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<List> getAllItemsByOrder(Long orderID) {
+        return null;
+    }
+
     private boolean checkOrderEligibility(AddOrderRequest order) {
         Collection<OrderDetailDTO> orderDetials = order.getOrderDetials();
         boolean isEligible = true;

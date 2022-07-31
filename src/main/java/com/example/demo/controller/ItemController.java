@@ -36,6 +36,11 @@ public class ItemController {
         return service.addItem(itemRequest);
     }
 
+    @GetMapping(value = "/get/{oid}")
+    public ResponseEntity<List> getItemsByOrder(@PathVariable("oid") String orderID ){
+        return service.getAllItemsByOrder(Long.parseLong(orderID));
+    }
+
 
 
 }
