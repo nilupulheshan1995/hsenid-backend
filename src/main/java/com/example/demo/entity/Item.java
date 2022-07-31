@@ -28,6 +28,9 @@ public class Item implements Serializable {
     @Column(name = "item_id")
     private Long itemid;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "av_stock")
     private BigDecimal avStock;
 
