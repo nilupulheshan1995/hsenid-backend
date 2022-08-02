@@ -19,7 +19,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Table(name = "item")
-public class Item implements Serializable {
+public class ItemEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,10 +54,10 @@ public class Item implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private Collection<Preorder> preorderCollection;
 
-    public Item() {
+    public ItemEntity() {
     }
 
-    public Item(String name,String description,double avStock, Long unitPrice, Long unitCost, Integer preOrderMargin, Long category_id) {
+    public ItemEntity(String name, String description, double avStock, Long unitPrice, Long unitCost, Integer preOrderMargin, Long category_id) {
         this.name = name;
         this.avStock = new BigDecimal(avStock);
         this.unitPrice = unitPrice;

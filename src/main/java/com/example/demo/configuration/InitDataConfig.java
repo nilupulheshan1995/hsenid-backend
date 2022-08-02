@@ -1,8 +1,8 @@
 package com.example.demo.configuration;
 
 import com.example.demo.entity.Category;
-import com.example.demo.entity.Item;
-import com.example.demo.entity.Order1;
+import com.example.demo.entity.ItemEntity;
+import com.example.demo.entity.OrderEntity;
 import com.example.demo.entity.OrderDetails;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ItemRepository;
@@ -31,14 +31,14 @@ public class InitDataConfig {
             Category category3 = new Category(3L, "sweets", "food item");
             categoryRepository.saveAll(List.of(category1, category2, category3));
 
-            Item i1 = new Item("Dhal","1kg Indian",100,200L,190L,0,1L);
-            Item i2 = new Item("Onion","1kg SL",100,250L,230L,0,1L);
-            Item i3 = new Item("Sudu Samba","Araliya 5kg",150,1200L,1100L,50,1L);
-            Item i4 = new Item("Rathu Nadu","Nipuna 5kg",500,900L,850L,50,1L);
-            Item i5 = new Item("Red Onion","1kg",500,230L,220L,0,1L);
+            ItemEntity i1 = new ItemEntity("Dhal","1kg Indian",100,200L,190L,0,1L);
+            ItemEntity i2 = new ItemEntity("Onion","1kg SL",100,250L,230L,0,1L);
+            ItemEntity i3 = new ItemEntity("Sudu Samba","Araliya 5kg",150,1200L,1100L,50,1L);
+            ItemEntity i4 = new ItemEntity("Rathu Nadu","Nipuna 5kg",500,900L,850L,50,1L);
+            ItemEntity i5 = new ItemEntity("Red Onion","1kg",500,230L,220L,0,1L);
             itemRepository.saveAll(List.of(i1,i2,i3,i4,i5));
 
-            Order1 o1 = new Order1(13650,0,new Date(),0,1L);
+            OrderEntity o1 = new OrderEntity(13650,0,new Date(),0,1L);
             orderRepository.save(o1);
 
             OrderDetails d1 = new OrderDetails(2,1L,1L);

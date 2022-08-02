@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Item;
+import com.example.demo.entity.ItemEntity;
 import com.example.demo.payload.request.AddItemRequest;
 import com.example.demo.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ public class ItemController {
     ItemService service;
 
     @GetMapping(path = "/getAll")           // api/item/getALl
-    public ResponseEntity<List<Item>> getAllItems() {
-        List<Item> allItems = service.getAllItems();
+    public ResponseEntity<List<ItemEntity>> getAllItems() {
+        List<ItemEntity> allItems = service.getAllItems();
         return new ResponseEntity<>(allItems,HttpStatus.OK);
     }
 

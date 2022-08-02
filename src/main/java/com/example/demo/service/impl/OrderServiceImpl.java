@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Item;
-import com.example.demo.entity.Order1;
+import com.example.demo.entity.ItemEntity;
+import com.example.demo.entity.OrderEntity;
 import com.example.demo.entity.OrderDetails;
 import com.example.demo.payload.request.AddOrderRequest;
 import com.example.demo.payload.request.OrderDetailDTO;
@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
     ItemRepository itemRepository;
 
     @Override
-    public ResponseEntity<List<Order1>> getAllOrders() {
-        List<Order1> all = orderRepository.findAll();
+    public ResponseEntity<List<OrderEntity>> getAllOrders() {
+        List<OrderEntity> all = orderRepository.findAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
@@ -45,10 +45,10 @@ public class OrderServiceImpl implements OrderService {
         if(!isEligible) return new ResponseEntity<>("insufficient Stock !",HttpStatus.BAD_REQUEST);
 
         ModelMapper mapper = new ModelMapper();
-        Order1 orderEntity = mapper.map(order, Order1.class);
+        OrderEntity orderEntity = mapper.map(order, OrderEntity.class);
         orderEntity.setDate(getDate());
 
-        Order1 saved = orderRepository.save(orderEntity);
+        OrderEntity saved = orderRepository.save(orderEntity);
         saveOrderDetails(order,saved);
         return new ResponseEntity<>(saved,HttpStatus.OK);
     }
@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
         Collection<OrderDetailDTO> orderDetials = order.getOrderDetials();
         boolean isEligible = true;
         for (OrderDetailDTO orderD : orderDetials) {
-            Optional<Item> item = itemRepository.findById(orderD.getItem());
+            Optional<ItemEntity> item = itemRepository.findById(orderD.getItem());
             if(item.isPresent()){
                 if(item.get().getAvStock().doubleValue() < orderD.getQty().doubleValue())
                     isEligible = false;
@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
         return isEligible;
     }
 
-    private void saveOrderDetails(AddOrderRequest order, Order1 savedOrder) {
+    private void saveOrderDetails(AddOrderRequest order, OrderEntity savedOrder) {
         Collection<OrderDetailDTO> orderDetials = order.getOrderDetials();
         for (OrderDetailDTO orderD : orderDetials) {
             System.out.println(orderD.getItem()+" - "+orderD.getQty());
@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private void updateItem(BigDecimal qty, Long item) {
-        Optional<Item> itemUpadte = itemRepository.findById(item);
+        Optional<ItemEntity> itemUpadte = itemRepository.findById(item);
         if(itemUpadte.isPresent()){
             BigDecimal stock = itemUpadte.get().getAvStock();
             double d = stock.doubleValue() - qty.doubleValue();

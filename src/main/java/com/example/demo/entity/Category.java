@@ -42,7 +42,7 @@ public class Category implements Serializable {
     private String description;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-//    private Collection<Item> itemCollection;
+//    private Collection<ItemEntity> itemCollection;
 
     public Category() {
     }

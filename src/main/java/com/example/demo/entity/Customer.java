@@ -46,7 +46,7 @@ public class Customer implements Serializable {
     private String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    private Collection<Order1> order1Collection;
+    private Collection<OrderEntity> order1Collection;
 
     public Customer() {
     }

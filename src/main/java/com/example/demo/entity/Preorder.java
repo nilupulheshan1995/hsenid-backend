@@ -36,7 +36,7 @@ public class Preorder implements Serializable {
 
     @JoinColumn(name = "item_id", referencedColumnName = "item_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Item item;
+    private ItemEntity item;
 
     public Preorder() {
     }
