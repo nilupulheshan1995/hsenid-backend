@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "um_role")
-public class UmRole implements Serializable {
+public class UmRole extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

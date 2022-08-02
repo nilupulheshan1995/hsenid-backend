@@ -20,7 +20,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "order_table")
-public class OrderEntity implements Serializable {
+public class OrderEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

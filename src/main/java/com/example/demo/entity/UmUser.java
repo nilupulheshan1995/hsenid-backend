@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "um_user")
-public class UmUser implements Serializable {
+public class UmUser extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

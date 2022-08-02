@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(name = "category")
-public class CategoryEntity implements Serializable {
+public class CategoryEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

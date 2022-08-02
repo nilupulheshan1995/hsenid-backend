@@ -30,7 +30,7 @@ import javax.persistence.Table;
 @Table(name = "customer")
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")})
-public class Customer implements Serializable {
+public class Customer extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
