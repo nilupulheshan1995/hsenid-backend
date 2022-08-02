@@ -42,4 +42,9 @@ public class OrderDetails implements Serializable {
     public OrderDetails() {
     }
 
+    public OrderDetails(double qty, Long item, Long order) {
+        this.qty = new BigDecimal(qty);
+        this.item = item;
+        this.order = order;
+    }
 }

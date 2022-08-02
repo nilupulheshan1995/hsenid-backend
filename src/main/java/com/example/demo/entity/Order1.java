@@ -50,4 +50,11 @@ public class Order1 implements Serializable {
     public Order1() {
     }
 
+    public Order1(double sellTotal, double costTotal, Date date, double discount, Long customer) {
+        this.sellTotal = new BigDecimal(sellTotal);
+        this.costTotal = new BigDecimal(costTotal);
+        this.date = date;
+        this.discount = new BigDecimal(discount);
+        this.customer = customer;
+    }
 }

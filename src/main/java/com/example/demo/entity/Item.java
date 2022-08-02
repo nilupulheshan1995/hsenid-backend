@@ -13,7 +13,6 @@ import java.util.Collection;
 import javax.persistence.*;
 
 /**
- *
  * @author Asus
  */
 @Entity
@@ -58,5 +57,13 @@ public class Item implements Serializable {
     public Item() {
     }
 
-    
+    public Item(String name,String description,double avStock, Long unitPrice, Long unitCost, Integer preOrderMargin, Long category_id) {
+        this.name = name;
+        this.avStock = new BigDecimal(avStock);
+        this.unitPrice = unitPrice;
+        this.unitCost = unitCost;
+        this.preOrderMargin = preOrderMargin;
+        this.description = description;
+        this.category_id = category_id;
+    }
 }
