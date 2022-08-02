@@ -42,7 +42,7 @@ public class OrderEntity implements Serializable {
     private BigDecimal discount;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order1")
-//    private Collection<OrderDetails> orderDetailsCollection;
+//    private Collection<OrderDetailsEntity> orderDetailsCollection;
 
     @Column(name = "customer_id")
     private Long customer;

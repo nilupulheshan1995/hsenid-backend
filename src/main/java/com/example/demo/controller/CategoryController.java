@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Category;
 import com.example.demo.payload.request.CategoryRequest;
-import com.example.demo.repository.CategoryRepository;
 import com.example.demo.service.CategoryService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

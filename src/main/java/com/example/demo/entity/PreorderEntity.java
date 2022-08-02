@@ -19,7 +19,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "preorder")
-public class Preorder implements Serializable {
+public class PreorderEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,7 +38,7 @@ public class Preorder implements Serializable {
     @ManyToOne(optional = false)
     private ItemEntity item;
 
-    public Preorder() {
+    public PreorderEntity() {
     }
 
 }

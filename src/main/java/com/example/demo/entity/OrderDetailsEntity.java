@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "order_details")
-public class OrderDetails implements Serializable {
+public class OrderDetailsEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,10 +39,10 @@ public class OrderDetails implements Serializable {
     @Column(name = "order_id")
     private Long order;
 
-    public OrderDetails() {
+    public OrderDetailsEntity() {
     }
 
-    public OrderDetails(double qty, Long item, Long order) {
+    public OrderDetailsEntity(double qty, Long item, Long order) {
         this.qty = new BigDecimal(qty);
         this.item = item;
         this.order = order;

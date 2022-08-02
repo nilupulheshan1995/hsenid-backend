@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(name = "category")
-public class Category implements Serializable {
+public class CategoryEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,10 +44,10 @@ public class Category implements Serializable {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 //    private Collection<ItemEntity> itemCollection;
 
-    public Category() {
+    public CategoryEntity() {
     }
 
-    public Category(Long categoryId, String name, String description) {
+    public CategoryEntity(Long categoryId, String name, String description) {
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;

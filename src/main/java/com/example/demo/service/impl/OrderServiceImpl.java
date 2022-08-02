@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.ItemEntity;
+import com.example.demo.entity.OrderDetailsEntity;
 import com.example.demo.entity.OrderEntity;
-import com.example.demo.entity.OrderDetails;
 import com.example.demo.payload.request.AddOrderRequest;
 import com.example.demo.payload.request.OrderDetailDTO;
 import com.example.demo.repository.ItemRepository;
@@ -76,7 +76,7 @@ public class OrderServiceImpl implements OrderService {
         Collection<OrderDetailDTO> orderDetials = order.getOrderDetials();
         for (OrderDetailDTO orderD : orderDetials) {
             System.out.println(orderD.getItem()+" - "+orderD.getQty());
-            OrderDetails details = new OrderDetails();
+            OrderDetailsEntity details = new OrderDetailsEntity();
             details.setItem(orderD.getItem());
             details.setQty(orderD.getQty());
             details.setOrder(savedOrder.getOrder1PK());

@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Category;
+import com.example.demo.entity.CategoryEntity;
 import com.example.demo.entity.ItemEntity;
-import com.example.demo.entity.OrderDetails;
+import com.example.demo.entity.OrderDetailsEntity;
 import com.example.demo.payload.request.AddItemRequest;
 import com.example.demo.payload.response.OrderItemsResponse;
 import com.example.demo.repository.CategoryRepository;
@@ -35,14 +35,14 @@ public class ItemServiceImpl implements ItemService {
     public ResponseEntity addItem(AddItemRequest itemRequest) {
         ModelMapper mapper = new ModelMapper();
         ItemEntity itemEntity = mapper.map(itemRequest, ItemEntity.class);
-        Optional<Category> category = categoryRepo.findById(itemRequest.getCategoryId());
+        Optional<CategoryEntity> category = categoryRepo.findById(itemRequest.getCategoryId());
         if (category.isPresent()) {
-            Category categoryEntity = category.get();
+            CategoryEntity categoryEntity = category.get();
             itemEntity.setCategory_id(itemRequest.getCategoryId());
 
             return new ResponseEntity<>(itemRepo.save(itemEntity), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Category Not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("CategoryEntity Not found", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -64,8 +64,8 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ResponseEntity<List> getAllItemsByOrder(long orderID) {
         List<OrderItemsResponse> orderItems = new ArrayList<>();
-        List<OrderDetails> allByOrder = detailRepo.findAllByOrder(orderID);
-        for (OrderDetails orderDetails : allByOrder) {
+        List<OrderDetailsEntity> allByOrder = detailRepo.findAllByOrder(orderID);
+        for (OrderDetailsEntity orderDetails : allByOrder) {
             Optional<ItemEntity> item = itemRepo.findById(orderDetails.getItem());
             if (item.isEmpty()) continue;
             OrderItemsResponse build = OrderItemsResponse.builder()

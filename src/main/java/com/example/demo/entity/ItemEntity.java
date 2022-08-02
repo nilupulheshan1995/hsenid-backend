@@ -49,10 +49,10 @@ public class ItemEntity implements Serializable {
     private Long category_id;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-//    private Collection<OrderDetails> orderDetailsCollection;
+//    private Collection<OrderDetailsEntity> orderDetailsCollection;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-    private Collection<Preorder> preorderCollection;
+    private Collection<PreorderEntity> preorderCollection;
 
     public ItemEntity() {
     }
